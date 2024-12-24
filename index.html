@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Relacionamento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Lobster&family=Dancing+Script&display=swap" rel="stylesheet">
+    <style>
+        .heart {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 0, 0, 0.8);
+            transform: rotate(45deg);
+            animation: fall 10s linear infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 0, 0, 0.8);
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: -10px;
+            top: 0;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                left: calc(100% * var(--random-x));
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: auto;
+        }
+
+        h1 {
+            margin-top: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 2.5rem;
+            font-family: 'Lobster', cursive;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            padding: 0 15px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .instax-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .instax {
+            width: 150px;
+            height: 200px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .instax img {
+            width: 100%;
+            height: calc(100% - 30px);
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .instax span {
+            font-size: 0.9rem;
+            color: #555;
+            text-align: center;
+        }
+
+        #timer {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+            padding: 0 15px;
+        }
+
+        #message-box {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            margin-top: 20px;
+            width: 60px;
+            height: 60px;
+            background: #ff6f61;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #e65b50;
+        }
+
+        button::before {
+            content: "❤️";
+            font-size: 24px;
+            color: #fff;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Barra de rolagem estilizada */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #ff6f61, #fad0c4);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #e65b50, #ff9a9e);
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        /* Consultas de mídia para responsividade */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .instax {
+                width: 120px;
+                height: 160px;
+            }
+
+            .instax span {
+                font-size: 0.8rem;
+            }
+
+            #timer {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            .instax {
+                width: 120px;
+                height: 140px;
+            }
+
+            .instax span {
+                font-size: 0.7rem;
+            }
+
+            button {
+                width: 50px;
+                height: 50px;
+            }
+
+            button::before {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Nossa História 💕</h1>
+    <p>Enquanto olho para trás e vejo como chegamos até aqui, sinto que, mais do que qualquer outra coisa, foi a simplicidade do nosso começo que construiu tudo. Não foi um grande acontecimento, mas um encontro sincero, que seguiu com um caminho calmo e seguro, como se soubéssemos que, no fim das contas, o que realmente importava era estarmos presentes um para o outro.
+
+        Hoje, mais do que nunca, tenho a certeza de que o que estamos vivendo é exatamente o que precisávamos. Não foi a pressa ou as expectativas que nos trouxeram até aqui. Foi a maneira como o nosso primeiro encontro nos deu a chance de simplesmente ser, sem cobranças, sem complicações, apenas com a vontade de ver o que poderia crescer de tudo isso.. Fomos criando nossa história de forma tão natural que, ao olhar para ela agora, parece que sempre soubemos o que fazer, mesmo sem saber. E talvez essa tenha sido a verdadeira beleza de tudo: não precisávamos de um plano, apenas a confiança de que estávamos juntos e que isso bastava. Te amo! ❤️</p>
+
+    <div class="instax-gallery">
+        <div class="instax">
+            <img src="pedido.jpeg" alt="Foto 2">
+            <span>Um momento especial</span>
+        </div>
+        <div class="instax">
+            <img src="lindos.jpg" alt="Foto 1">
+            <span>Chiques</span>
+        </div>
+        <div class="instax">
+            <img src="inesquecivel.jpg" alt="Foto 3">
+            <span>Dia inesquecível</span>
+        </div>
+        <div class="instax">
+            <img src="sorriso.jpg" alt="Foto 4">
+            <span>Nosso sorriso juntos</span>
+        </div>
+    </div>
+    <div class="instax-gallery">
+        <div class="instax">
+            <img src="folioes.jpg" alt="Foto 1">
+            <span>🦀</span>
+        </div>
+        <div class="instax">
+            <img src="natal.jpg" alt="Foto 2">
+            <span>Natal 2023</span>
+        </div>
+        <div class="instax">
+            <img src="reveilon.jpg" alt="Foto 3">
+            <span>Virada</span>
+        </div>
+        <div class="instax">
+            <img src="kaluh.jpg" alt="Foto 4">
+            <span>Rolezeiros</span>
+        </div>
+    </div>
+    <div class="instax-gallery">
+        <div class="instax">
+            <img src="bjin.jpg" alt="Foto 1">
+            <span>Bejinho</span>
+        </div>
+        <div class="instax">
+            <img src="primeira.jpg" alt="Foto 2">
+            <span>A primeira</span>
+        </div>
+        <div class="instax">
+            <img src="maodada.jpg" alt="Foto 3">
+            <span>Amoi</span>
+        </div>
+        <div class="instax">
+            <img src="bonitos.jpg" alt="Foto 4">
+            <span>Casal mais lindo</span>
+        </div>
+    </div>
+
+    <div id="timer"></div>
+    <div id="message-box">Clique no coração para ver uma mensagem especial. 💌</div>
+    <button onclick="generateMessage()"></button>
+    <div style="margin-top: 20px; margin-bottom: 20px;">
+        <iframe 
+            src="https://open.spotify.com/embed/track/2plbrEY59IikOBgBGLjaoe" 
+            width="300" 
+            height="80" 
+            allowtransparency="true" 
+            allow="encrypted-media" 
+            style="border-radius:12px; border:none;">
+        </iframe>
+        
+    </div>
+
+    <script>
+        const startDate = new Date('2023-12-25');
+
+        function updateTimer() {
+            const now = new Date();
+            const diff = now - startDate;
+
+            const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+            const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('timer').textContent =
+                `Estamos juntos há ${years} anos, ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos.`;
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        function generateMessage() {
+            const messages = [
+                "Você é o amor da minha vida! ❤️",
+                "Cada dia com você é uma bênção. 💕",
+                "Te amo mais do que palavras podem dizer. 🥰",
+                "Obrigado por ser minha pessoa especial. 🌟",
+                "Juntos somos invencíveis. 👫",
+                "Você é meu tudo. 🌹",
+                "Sempre e para sempre, eu te amo. 💖",
+                "Com você, o mundo é mais bonito. 🌹",
+                "Você é meu sonho realizado. ✨",
+                "Tudo o que preciso para ser feliz é você. 💕",
+                "Não importa onde eu vá, meu coração sempre estará com você. 🌍",
+                "Tudo o que preciso para ser feliz é você. 💕"
+            ];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('message-box').textContent = randomMessage;
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+            heart.style.setProperty("--random-x", Math.random());
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 500);
+    </script>
+</body>
+
+</html>
